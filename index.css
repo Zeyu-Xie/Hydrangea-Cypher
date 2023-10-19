@@ -1,9 +1,14 @@
-input {
-  margin: 0.75rem;
+h1 {
+  font-family: "This Night";
 }
 
 textarea {
   resize: none;
+}
+
+@font-face {
+  font-family: "This Night";
+  src: url("./This Night.ttf");
 }
 
 /*# sourceMappingURL=index.css.map */
