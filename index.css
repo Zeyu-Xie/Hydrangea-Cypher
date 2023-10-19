@@ -2,4 +2,8 @@ input {
   margin: 0.75rem;
 }
 
+textarea {
+  resize: none;
+}
+
 /*# sourceMappingURL=index.css.map */
