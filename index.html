@@ -37,7 +37,17 @@
             <button id="copyButton" class="btn btn-outline-secondary" type="button">Copy</button>
         </div>
 
-        <div id="result">
+        <div id="result" class="mb-5">
+        </div>
+
+        <hr>
+
+        <div class="mb-3">
+            <ul>
+                <li>
+                    <b>2023.10.23</b> Deleted the static <code>encryptedContent.substring(0,10)</code> which is always shown as <code>U2FsdGVkX1</code>. This string basically stands for the base64 form of the UTF-8 string <code>Salted__</code>.
+                </li>
+            </ul>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

@@ -13,11 +13,11 @@ _encryptButton.addEventListener("click", () => {
     const content = _contentInput.value
     const passphrase = _passphraseInput.value
     const encryptedContent = Aes.encrypt(content, passphrase).toString()
-    _result.innerText = encryptedContent
+    _result.innerText = encryptedContent.substring(10)
 })
 
 _decryptButton.addEventListener("click", () => {
-    const content = _contentInput.value
+    const content = "U2FsdGVkX1" + _contentInput.value
     const passphrase = _passphraseInput.value
     const decryptedBytes = Aes.decrypt(content, passphrase)
     const decryptedContent = decryptedBytes.toString(Enc.Utf8)
