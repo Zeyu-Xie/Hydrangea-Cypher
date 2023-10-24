@@ -9,7 +9,7 @@ _encryptButton2.addEventListener("click", () => {
     const file = _fileUpload2.files[0]
     const passphrase = _passphraseInput2.value
     const reader = new FileReader()
-    reader.readAsBinaryString(file)
+    reader.readAsText(file, "UTF-8")
     reader.onloadend = evt => {
         const fileStr = evt.target.result
         const fileName = file.name
@@ -29,7 +29,7 @@ _decryptButton2.addEventListener("click", () => {
     const file = _fileUpload2.files[0]
     const passphrase = _passphraseInput2.value
     const reader = new FileReader()
-    reader.readAsBinaryString(file)
+    reader.readAsText(file, "UTF-8")
     reader.onloadend = evt => {
 
         const fileStr = evt.target.result
