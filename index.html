@@ -20,32 +20,64 @@
             - Made by <a href="https://zeyu-xie.github.io/Acan">Acan</a>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">Content</span>
-            <textarea id="contentInput" class="form-control" aria-label="With textarea"></textarea>
+        <div class="form-check form-switch mb-3">
+            <input class="form-check-input" type="checkbox" role="switch" id="encryptTypeSwitch" checked>
+            <label class="form-check-label" for="encryptTypeSwitch">Encrypt Texts</label>
         </div>
 
-        <div class="input-group mb-3">
-            <span class="input-group-text">Passphrase</span>
-            <input id="passphraseInput" type="text" class="form-control" aria-label="passphrase"
-                aria-describedby="basic-addon1">
-        </div>
+        <section id="section1">
+            <div class="input-group mb-3">
+                <span class="input-group-text">Content</span>
+                <textarea id="contentInput" class="form-control" aria-label="With textarea"></textarea>
+            </div>
 
-        <div class="input-group mb-3">
-            <button id="encryptButton" class="btn btn-outline-secondary" type="button">Encrypt</button>
-            <button id="decryptButton" class="btn btn-outline-secondary" type="button">Decrypt</button>
-            <button id="copyButton" class="btn btn-outline-secondary" type="button">Copy</button>
-        </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Passphrase</span>
+                <input id="passphraseInput" type="text" class="form-control" aria-label="passphrase"
+                    aria-describedby="basic-addon1">
+            </div>
 
-        <div id="result" class="mb-5">
-        </div>
+            <div class="input-group mb-3">
+                <button id="encryptButton" class="btn btn-outline-secondary" type="button">Encrypt</button>
+                <button id="decryptButton" class="btn btn-outline-secondary" type="button">Decrypt</button>
+                <button id="copyButton" class="btn btn-outline-secondary" type="button">Copy</button>
+            </div>
+
+            <div id="result" class="mb-5">
+            </div>
+        </section>
+
+        <section id="section2" style="display: none;">
+            <div class="input-group mb-3">
+                <input type="file" class="form-control" id="fileUpload2">
+                <label class="input-group-text" for="fileUpload2">Upload</label>
+            </div>
+
+            <div class="input-group mb-3">
+                <span class="input-group-text">Passphrase</span>
+                <input id="passphraseInput2" type="text" class="form-control" aria-label="passphrase"
+                    aria-describedby="basic-addon1">
+            </div>
+
+            <div class="input-group mb-3">
+                <button id="encryptButton2" class="btn btn-outline-secondary" type="button">Encrypt</button>
+                <button id="decryptButton2" class="btn btn-outline-secondary" type="button">Decrypt</button>
+            </div>
+
+            <div id="result2" class="mb-5">
+                <a href="" download="" id="downloadLink2">Download Link</a>
+            </div>
+
+        </section>
 
         <hr>
 
         <div class="mb-3">
             <ul>
                 <li>
-                    <b>2023.10.23</b> Deleted the static <code>encryptedContent.substring(0,10)</code> which is always shown as <code>U2FsdGVkX1</code>. This string basically stands for the base64 form of the UTF-8 string <code>Salted__</code>.
+                    <b>2023.10.23</b> Deleted the static <code>encryptedContent.substring(0,10)</code> which is always
+                    shown as <code>U2FsdGVkX1</code>. This string basically stands for the base64 form of the UTF-8
+                    string <code>Salted__</code>.
                 </li>
             </ul>
         </div>
@@ -54,7 +86,23 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
     <script src="./node_modules/crypto-js/crypto-js.js"></script>
+    <script>
+        const _encryptTypeSwitch = document.getElementById("encryptTypeSwitch")
+        const _section1 = document.getElementById("section1")
+        const _section2 = document.getElementById("section2")
+        _encryptTypeSwitch.addEventListener("change", () => {
+            if (_encryptTypeSwitch.checked) {
+                _section1.style.display = "block"
+                _section2.style.display = "none"
+            }
+            else {
+                _section1.style.display = "none"
+                _section2.style.display = "block"
+            }
+        })
+    </script>
     <script src="./index.js"></script>
+    <script src="./index2.js"></script>
 </body>
 
 </html>
