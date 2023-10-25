@@ -35,7 +35,7 @@ _encryptButton2.addEventListener("click", () => {
         const encryptedFileBase64 = Aes.encrypt(fileType.padStart(64, "0") + fileBase64, passphrase).toString().substring(10)
         
         // 对 文件名 加密
-        const encryptedFileName = Aes.encrypt(fileName, passphrase).toString().substring(10)+".hc"
+        const encryptedFileName = (Aes.encrypt(fileName, passphrase).toString().substring(10)+".hc").replace(/\//g, "_")
 
         // 将加密后的 (文件类型 + base64 字符串) 转为 blob
         const encryptedFileBlob = new Blob([encryptedFileBase64], { type: "application/octet-stream" });
@@ -83,7 +83,7 @@ _decryptButton2.addEventListener("click", () => {
         const decryptedFileStr = Aes.decrypt("U2FsdGVkX1" + fileStr, passphrase).toString(Enc.Utf8)
 
         // 对 文件名 解密
-        const decryptedFileName = Aes.decrypt(("U2FsdGVkX1" + fileName).substring(0, fileName.length+7), passphrase).toString(Enc.Utf8)
+        const decryptedFileName = Aes.decrypt(("U2FsdGVkX1" + fileName.replace(/_/g, "/")).substring(0, fileName.length+7), passphrase).toString(Enc.Utf8)
 
         // 提取 数据类型
         const tmp = decryptedFileStr.substring(0, 64)
