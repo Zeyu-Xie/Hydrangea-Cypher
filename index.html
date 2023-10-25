@@ -75,12 +75,28 @@
         <div class="mb-3">
             <ul>
                 <li>
-                    <b>2023.10.25</b> Allow users to encrypt files. However, due to unknown reasons, large files may not be encrypted successfully so far.
+                    <b>2023.10.25</b>
+                    <ul>
+                        <li>
+                            Allow users to encrypt files. However, due to unknown reasons, large files
+                            may not be encrypted successfully so far.
+                        </li>
+                        <li>
+                            We have fixed the bug from <code>uint8ToBase64</code> function, which originally led to stack
+                            overflow in case of files larger than 8 KB occurs.
+                        </li>
+                    </ul>
                 </li>
                 <li>
-                    <b>2023.10.23</b> Deleted the static <code>encryptedContent.substring(0,10)</code> which is always
-                    shown as <code>U2FsdGVkX1</code>. This string basically stands for the base64 form of the UTF-8
-                    string <code>Salted__</code>.
+                    <b>2023.10.23</b>
+                    <ul>
+                        <li>
+                            Deleted the static <code>encryptedContent.substring(0,10)</code> which is always
+                            shown as <code>U2FsdGVkX1</code>. This string basically stands for the base64 form of the
+                            UTF-8
+                            string <code>Salted__</code>.
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>
