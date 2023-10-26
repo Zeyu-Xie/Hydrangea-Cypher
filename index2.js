@@ -139,6 +139,8 @@ _decryptButton2.addEventListener("click", () => {
         console.log("ERROR", err)
     }
 
+    hideSpinner()
+
 })
 
 const uint8ArrayToBase64 = uint8Array => {
