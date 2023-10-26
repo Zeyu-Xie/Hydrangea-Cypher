@@ -10,18 +10,30 @@ const _copyButton = document.querySelector("button[id='copyButton']")
 const _result = document.querySelector("div[id='result']")
 
 _encryptButton.addEventListener("click", () => {
-    const content = _contentInput.value
-    const passphrase = _passphraseInput.value
-    const encryptedContent = Aes.encrypt(content, passphrase).toString()
-    _result.innerText = encryptedContent.substring(10)
+    showSpinner()
+    try {
+        const content = _contentInput.value
+        const passphrase = _passphraseInput.value
+        const encryptedContent = Aes.encrypt(content, passphrase).toString()
+        _result.innerText = encryptedContent.substring(10)
+    } catch (err) {
+        console.log("ERROR", err)
+    }
+    hideSpinner()
 })
 
 _decryptButton.addEventListener("click", () => {
-    const content = "U2FsdGVkX1" + _contentInput.value
-    const passphrase = _passphraseInput.value
-    const decryptedBytes = Aes.decrypt(content, passphrase)
-    const decryptedContent = decryptedBytes.toString(Enc.Utf8)
-    _result.innerText = decryptedContent
+    showSpinner()
+    try {
+        const content = "U2FsdGVkX1" + _contentInput.value
+        const passphrase = _passphraseInput.value
+        const decryptedBytes = Aes.decrypt(content, passphrase)
+        const decryptedContent = decryptedBytes.toString(Enc.Utf8)
+        _result.innerText = decryptedContent
+    } catch (err) {
+        console.log("ERROR", err)
+    }
+    hideSpinner()
 })
 
 _copyButton.addEventListener("click", () => {
