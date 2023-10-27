@@ -2,25 +2,6 @@ name: directory-listing
 on: [ push ]
 
 jobs:
-
-  add_test_file:
-    runs-on: ubuntu-latest
-    name: Test File Adding
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Test Function
-        run: node test.js
-
   pages-directory-listing:
     runs-on: ubuntu-latest
     name: Directory Listings Index
