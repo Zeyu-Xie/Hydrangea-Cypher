@@ -17,6 +17,7 @@ _encryptButton2.addEventListener("click", () => {
 
         // 获取 passphrase
         const passphrase = _passphraseInput2.value
+        const passphrase_md5_ascii = getMd5(passphrase)
 
         // 获取 fileName 和 fileType
         const fileName = file.name
@@ -37,10 +38,10 @@ _encryptButton2.addEventListener("click", () => {
             const fileBase64 = uint8ArrayToBase64(filePlainBytes)
 
             // 对 (文件类型 + base64 字符串) 加密
-            const encryptedFileBase64 = Aes.encrypt(fileType.padStart(64, "0") + fileBase64, passphrase).toString().substring(10)
+            const encryptedFileBase64 = Aes.encrypt(fileType.padStart(64, "0") + fileBase64, passphrase_md5_ascii).toString().substring(10)
 
             // 对 文件名 加密
-            const encryptedFileName = (Aes.encrypt(fileName, passphrase).toString().substring(10) + ".hc").replace(/\//g, "_")
+            const encryptedFileName = (Aes.encrypt(fileName, passphrase_md5_ascii).toString().substring(10) + ".hc").replace(/\//g, "_")
 
             // 将加密后的 (文件类型 + base64 字符串) 转为 blob
             const encryptedFileBlob = new Blob([encryptedFileBase64], { type: "application/octet-stream" });
@@ -75,6 +76,7 @@ _decryptButton2.addEventListener("click", () => {
 
         // 获取 passphrase
         const passphrase = _passphraseInput2.value
+        const passphrase_md5_ascii = getMd5(passphrase)
 
         // 获取 fileName 和 fileType
         const fileName = file.name
@@ -96,10 +98,10 @@ _decryptButton2.addEventListener("click", () => {
             const fileStr = decoder.decode(filePlainBytes)
 
             // 对 字符串 解密
-            const decryptedFileStr = Aes.decrypt("U2FsdGVkX1" + fileStr, passphrase).toString(Enc.Utf8)
+            const decryptedFileStr = Aes.decrypt("U2FsdGVkX1" + fileStr, passphrase_md5_ascii).toString(Enc.Utf8)
 
             // 对 文件名 解密
-            const decryptedFileName = Aes.decrypt(("U2FsdGVkX1" + fileName.replace(/_/g, "/")).substring(0, fileName.length + 7), passphrase).toString(Enc.Utf8)
+            const decryptedFileName = Aes.decrypt(("U2FsdGVkX1" + fileName.replace(/_/g, "/")).substring(0, fileName.length + 7), passphrase_md5_ascii).toString(Enc.Utf8)
 
             // 提取 数据类型
             const tmp = decryptedFileStr.substring(0, 64)
