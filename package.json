@@ -1,26 +1,29 @@
 {
-  "dependencies": {
-    "crypto-js": "^4.1.1",
-    "electron": "^27.0.4",
-    "electron-squirrel-startup": "^1.0.0",
-    "nodemailer": "^6.9.7"
-  },
   "name": "hydrangea-cypher",
-  "description": "For safety",
   "version": "1.0.0",
+  "description": "For Safety",
   "main": "main.js",
-  "icon": "bread_128.ico",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zeyu-xie/Hydrangea-Cypher.git"
+  },
   "keywords": [
-    "encrypt"
+    "Encryption"
   ],
   "author": "Acan",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zeyu-xie/Hydrangea-Cypher/issues"
+  },
+  "homepage": "https://github.com/zeyu-xie/Hydrangea-Cypher/tree/Windows",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
   "devDependencies": {
     "@electron-forge/cli": "^6.4.2",
     "@electron-forge/maker-deb": "^6.4.2",
@@ -29,6 +32,5 @@
     "@electron-forge/maker-zip": "^6.4.2",
     "@electron-forge/plugin-auto-unpack-natives": "^6.4.2",
     "electron": "^27.0.4"
-  },
-  "productName": "Hydrangea-Cypher"
+  }
 }
