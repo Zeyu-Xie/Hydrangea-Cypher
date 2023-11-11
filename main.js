@@ -9,13 +9,16 @@ const createWindow = () => {
     const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
+        // Change icon for Linux and Windows
+        icon: "./web/bread_128.ico",
+        title: "Hydrangea Cypher",
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }
     })
 
     // and load the index.html of the app.
-    mainWindow.loadFile('index.html')
+    mainWindow.loadFile('./web/index.html')
 
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
