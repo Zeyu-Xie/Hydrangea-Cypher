@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- base url -->
+    <base href="#">
+
+    <!-- charset info -->
+    <meta charset="UTF-8">
+
+    <!-- basic info -->
+    <meta name="author" content="Acan">
+    <meta name="keywords" content="cypher, password, hash">
+    <meta name="description" content="Hydrangea Cypher">
+
+    <!-- open graph -->
+    <meta property="og:title" content="Hydrangea Cypher">
+    <meta property="og:image" content="https://zeyu-xie.github.io/Myosotis-Config/web/favicon.ico">
+    <meta property="og:description" content="Hydrangea Cypher">
+
+    <!-- browser info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- system info -->
+    <meta name="apple-mobile-web-app-title" content="Myosotis Config - Web">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="msapplication-TileColor" content="#ffffff">
+
+    <!-- search engine info -->
+    <meta name="robots" content="index, follow">
+
+    <!-- other meta info -->
+    <meta content="always" name="referrer">
+
+    <!-- icons -->
+    <link rel="apple-touch-icon" href="https://zeyu-xie.github.io/Myosotis-Config/web/favicon.ico">
+    <link rel="icon" href="https://zeyu-xie.github.io/Myosotis-Config/web/favicon.ico">
+
+    <!-- web title -->
+    <title>Hydrangea Cypher</title>
+
+    <!-- css style sheet -->
+    <link rel="stylesheet" href="https://zeyu-xie.github.io/Myosotis-Config/web/index.css">
+
+    <style>
+        textarea {
+            box-sizing: border-box;
+            width: 100%;
+            resize: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a href="#">Hydrangea Cypher</a>
+        <h1>Hydrangea Cypher</h1>
+    </header>
+
+    <h2>Encryption</h2>
+
+    <form onsubmit="return false;">
+
+        <label for="encryption_type">Please select your encryption type here.</label>
+        <select name="Encryption Type" id="encryption_type">
+            <option value="Text" selected>Text</option>
+            <option value="File">File</option>
+        </select>
+
+        <fieldset id="text_encryption">
+            <legend>Text Encryption</legend>
+            <p>
+                <textarea id="plain_text" rows="5" placeholder="Your plain text here"></textarea>
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input id="password" type="password" maxlength="16" placeholder="No more than 16 characters"
+                    style="min-width: 150px;">
+            </p>
+            <p>
+                <button id="plain_text_submit">Encrypt</button>
+            </p>
+            <p id="encrypted_text" style="word-break: break-all;">
+
+            </p>
+        </fieldset>
+
+        <fieldset id="file_encryption">
+            <legend>File Encryption</legend>
+            <p>
+                <input id="file" type="file">
+            </p>
+            <p>
+                <label for="password">Password</label>
+                <input id="password" type="password" maxlength="16" placeholder="No more than 16 characters"
+                    style="min-width: 150px;">
+            </p>
+            <p>
+                <button id="file_submit">Encrypt</button>
+            </p>
+            <p>
+                <a id="download" href="" download="">Download</a>
+            </p>
+        </fieldset>
+
+        <!-- Control Encryption Type -->
+
+        <script>
+            const _encryption_type = document.getElementById("encryption_type")
+            const text_encryption = document.getElementById("text_encryption")
+            const file_encryption = document.getElementById("file_encryption")
+
+            let encryption_type = _encryption_type.value
+
+            text_encryption.style.display = "block"
+            file_encryption.style.display = "none"
+
+            _encryption_type.onchange = () => {
+                encryption_type = _encryption_type.value
+                switch (encryption_type) {
+                    case "Text":
+                        text_encryption.style.display = "block"
+                        file_encryption.style.display = "none"
+                        break
+                    case "File":
+                        text_encryption.style.display = "none"
+                        file_encryption.style.display = "block"
+                        break
+                    default:
+                        text_encryption.style.display = "block"
+                        file_encryption.style.display = "none"
+                        break
+                }
+            }
+        </script>
+
+    </form>
+
+    <h2>Introduction</h2>
+
+    <p>
+        Hydrangea Cypher is your go-to solution for secure and flexible encryption. Developed by Acan, this platform
+        offers advanced cryptographic functions for both text and file encryption.
+    </p>
+
+    <h3>Text Encryption</h3>
+    <p>
+        Choose the "Text" option in the Encryption Type dropdown to encrypt your plain text. Enter your text in the
+        provided textarea, set a secure password (up to 16 characters), and click "Encrypt" to ensure the
+        confidentiality of your information.
+    </p>
+
+    <h3>File Encryption</h3>
+    <p>
+        Opt for "File" in the Encryption Type dropdown to seamlessly encrypt your files. Use the file input to select
+        the target file, set a robust password (up to 16 characters), and click "Encrypt" to protect your files from
+        unauthorized access.
+    </p>
+
+    <h3>User-Friendly Interface</h3>
+    <p>
+        Hydrangea Cypher provides a dynamic interface that adjusts to your chosen encryption type. Switch effortlessly
+        between text and file encryption, ensuring a smooth and user-friendly experience.
+    </p>
+
+    <footer>
+        <p>©️ 2023 Acan. All rights reserved.</p>
+
+        <nav>
+            <a href="mailto: xie.zeyu20@gmail.com">Email</a> |
+            <a href="https://github.com/zeyu-xie">GitHub</a>
+        </nav>
+    </footer>
+
+    <script src="./func.js"></script>
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
