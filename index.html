@@ -60,157 +60,55 @@
         <h1>Hydrangea Cypher</h1>
     </header>
 
-    <h2>Encryption / Decryption</h2>
-
-    <select id="function">
-        <option value="encrypt" selected>Encrypt</option>
-        <option value="decrypt">Decrypt</option>
-    </select>
-
+    <h2>Encryption</h2>
     <form id="encrypt_form" onsubmit="return false;">
 
-        <label for="encryption_type">Please select your encryption type here.</label>
-        <select name="Encryption Type" id="encryption_type">
-            <option value="Text" selected>Text</option>
-            <option value="File">File</option>
-        </select>
+        <section class="select-view">
 
-        <fieldset id="text_encryption">
-            <legend>Text Encryption</legend>
-            <p>
-                <textarea id="plain_text" rows="5" placeholder="Your plain text here"></textarea>
-            </p>
-            <p>
-                <label for="password">Password</label>
-                <input id="password" type="password" maxlength="16" placeholder="No more than 16 characters"
-                    style="min-width: 150px;">
-            </p>
-            <p>
-                <button id="plain_text_submit">Encrypt</button>
-            </p>
-            <p id="encrypted_text" style="word-break: break-all;">
+            <label for="encryption_type">Please select your encryption type here.</label>
+            <select class="select-view-select" name="Encryption Type" id="encryption_type">
+                <option value="Text" selected>Text</option>
+                <option value="File">File</option>
+            </select>
 
-            </p>
-        </fieldset>
+            <fieldset class="select-view-view option-Text" id="text_encryption">
+                <legend>Text Encryption</legend>
+                <p>
+                    <textarea id="plain_text" rows="5" placeholder="Your plain text here"></textarea>
+                </p>
+                <p>
+                    <label for="password">Password</label>
+                    <input id="password" type="password" maxlength="16" placeholder="No more than 16 characters"
+                        style="min-width: 150px;">
+                </p>
+                <p>
+                    <button id="plain_text_submit">Encrypt</button>
+                </p>
+                <p id="encrypted_text" style="word-break: break-all;">
 
-        <fieldset id="file_encryption">
-            <legend>File Encryption</legend>
-            <p>
-                <input id="file" type="file">
-            </p>
-            <p>
-                <label for="password">Password</label>
-                <input id="password" type="password" maxlength="16" placeholder="No more than 16 characters"
-                    style="min-width: 150px;">
-            </p>
-            <p>
-                <button id="file_submit">Encrypt</button>
-            </p>
-            <p>
-                <a id="download" href="" download="">Download</a>
-            </p>
-        </fieldset>
+                </p>
+            </fieldset>
 
-        <!-- Control Encryption Type -->
-
-        <script>
-            const _encryption_type = document.getElementById("encryption_type")
-            const text_encryption = document.getElementById("text_encryption")
-            const file_encryption = document.getElementById("file_encryption")
-
-            let encryption_type = _encryption_type.value
-
-            text_encryption.style.display = "block"
-            file_encryption.style.display = "none"
-
-            _encryption_type.onchange = () => {
-                encryption_type = _encryption_type.value
-                switch (encryption_type) {
-                    case "Text":
-                        text_encryption.style.display = "block"
-                        file_encryption.style.display = "none"
-                        break
-                    case "File":
-                        text_encryption.style.display = "none"
-                        file_encryption.style.display = "block"
-                        break
-                    default:
-                        text_encryption.style.display = "block"
-                        file_encryption.style.display = "none"
-                        break
-                }
-            }
-        </script>
+            <fieldset class="select-view-view option-File" id="file_encryption">
+                <legend>File Encryption</legend>
+                <p>
+                    <input id="file" type="file">
+                </p>
+                <p>
+                    <label for="password">Password</label>
+                    <input id="password" type="password" maxlength="16" placeholder="No more than 16 characters"
+                        style="min-width: 150px;">
+                </p>
+                <p>
+                    <button id="file_submit">Encrypt</button>
+                </p>
+                <p>
+                    <a id="download" href="" download="">Download</a>
+                </p>
+            </fieldset>
+        </section>
 
     </form>
-
-    <form id="decrypt_form" onsubmit="return false;" style="display: none;">
-
-        <label for="encryption_type">Please select your decryption type here.</label>
-        <select name="Encryption Type" id="encryption_type">
-            <option value="Text" selected>Text</option>
-            <option value="File">File</option>
-        </select>
-
-        <fieldset id="text_encryption">
-            <legend>Text Encryption</legend>
-            <p>
-                <textarea id="plain_text" rows="5" placeholder="Your plain text here"></textarea>
-            </p>
-            <p>
-                <label for="password">Password</label>
-                <input id="password" type="password" maxlength="16" placeholder="No more than 16 characters"
-                    style="min-width: 150px;">
-            </p>
-            <p>
-                <button id="plain_text_submit">Encrypt</button>
-            </p>
-            <p id="encrypted_text" style="word-break: break-all;">
-
-            </p>
-        </fieldset>
-
-        <fieldset id="file_encryption">
-            <legend>File Encryption</legend>
-            <p>
-                <input id="file" type="file">
-            </p>
-            <p>
-                <label for="password">Password</label>
-                <input id="password" type="password" maxlength="16" placeholder="No more than 16 characters"
-                    style="min-width: 150px;">
-            </p>
-            <p>
-                <button id="file_submit">Encrypt</button>
-            </p>
-            <p>
-                <a id="download" href="" download="">Download</a>
-            </p>
-        </fieldset>
-
-    </form>
-
-    <script>
-        const _function = document.getElementById("function")
-        const _encrypt_form = document.getElementById("encrypt_form")
-        const _decrypt_form = document.getElementById("decrypt_form")
-        _function.onchange = () => {
-            switch(_function.value) {
-            case "encrypt": 
-                _encrypt_form.style.display = "block"
-                _decrypt_form.style.display = "none"
-                break
-            case "decrypt": 
-                _encrypt_form.style.display = "none"
-                _decrypt_form.style.display = "block"
-                break
-            default: 
-                _encrypt_form.style.display = "block"
-                _decrypt_form.style.display = "none"
-                break
-        }
-        }
-    </script>
 
     <h2>Introduction</h2>
 
@@ -248,6 +146,7 @@
         </nav>
     </footer>
 
+    <script src="https://zeyu-xie.github.io/Myosotis-Config/web/index.js"></script>
     <script src="./func.js"></script>
     <script src="./index.js"></script>
 

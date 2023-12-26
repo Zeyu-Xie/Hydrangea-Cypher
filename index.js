@@ -13,7 +13,12 @@ _plain_text_submit.onclick = async () => {
     const password = _password.value
     const _encrypted_text = document.getElementById("encrypted_text")
 
-    text_encrypt(plain_text, password).then(encrypted_uint8array => btoa(encrypted_uint8array)).then(encrypted_base64 => {
+    text_encrypt(plain_text, password).then(encrypted_uint8array => {
+
+        const encrypted_string = new TextDecoder("ascii").decode(encrypted_uint8array)
+        return btoa(encrypted_string)
+
+    }).then(encrypted_base64 => {
         _encrypted_text.innerText = encrypted_base64
     }).catch(err => {
         console.error(err)
