@@ -1,5 +1,7 @@
 const _button_1 = document.getElementById("button_1")
 const _button_2 = document.getElementById("button_2")
+const _button_3 = document.getElementById("button_3")
+const _button_4 = document.getElementById("button_4")
 
 // Text Encryption
 
@@ -56,6 +58,23 @@ _button_2.onclick = async () => {
         _a_2.innerText = `Download (${encrypted_file.size})`
         _a_2.href = url
         _a_2.download = encrypted_file.name
+    }).catch(err => {
+        console.error(err)
+    })
+
+}
+
+// Text Decryption
+
+_button_3.onclick = async () => {
+
+    const _p_3 = document.getElementById("p_3")
+
+    uint8array_decrypt(encoder.encode(btoa(document.getElementById("textarea_3"))), document.getElementById("input_3").value).then(decrypted_uint8array => {
+        const decrypted_string = decoder.decode(decrypted_uint8array)
+        return btoa(decrypted_string)
+    }).then(decrypted_base64 => {
+        _p_3.innerText = decrypted_base64
     }).catch(err => {
         console.error(err)
     })
