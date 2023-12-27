@@ -1,3 +1,6 @@
+const encoder = new TextEncoder()
+const decoder = new TextDecoder()
+
 const _button_1 = document.getElementById("button_1")
 const _button_2 = document.getElementById("button_2")
 const _button_3 = document.getElementById("button_3")
@@ -5,18 +8,11 @@ const _button_4 = document.getElementById("button_4")
 
 // Text Encryption
 
-_button_1.onclick = async () => {
+_button_1.onclick = () => {
 
     const _p_1 = document.getElementById("p_1")
 
-    text_encrypt(document.getElementById("textarea_1").value, document.getElementById("input_1").value).then(encrypted_uint8array => {
-        const encrypted_string = String.fromCharCode.apply(null, encrypted_uint8array)
-        return btoa(encrypted_string)
-    }).then(encrypted_base64 => {
-        _p_1.innerText = encrypted_base64
-    }).catch(err => {
-        console.error(err)
-    })
+    _p_1.innerText=btoa(String.fromCharCode.apply(null, Array.from((aes_encrypt(encoder.encode(document.getElementById("textarea_1").value), encoder.encode(document.getElementById("input_1").value))))))
 
 }
 
@@ -40,7 +36,24 @@ _button_2.onclick = async () => {
     const lastModifiedDate = file.lastModifiedDate
     const webkitRelativePath = file.webkitRelativePath
 
-    await readAsText_packed(file).then(content_arraybuffer => new Uint8Array(content_arraybuffer)).then(async content_uint8array => await uint8array_encrypt(content_uint8array, password)).then(encrypted_content_uint8array => {
+    // Encrypt
+
+    const readAsText_packed = file => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader()
+            reader.onload = evt => {
+                const fileContent = evt.target.result
+                resolve(fileContent)
+            }
+            reader.onerror = err => {
+                reject(err);
+            }
+            reader.readAsText(file)
+        })
+    }
+
+    await readAsText_packed(file).then(content_string => encoder.encode(content_string)).then(content_uint8array => aes_encrypt(encoder.encode(content_uint8array), encoder.encode(password))).then(encrypted_content_uint8array => {
+                
         let encrypted_file = new File([encrypted_content_uint8array], `${name}.encrypted`, {
             type: "application/octet-stream"
         })
