@@ -45,7 +45,7 @@ const aes_encrypt = (plaintext_uint8array_tmp, key_uint8array_tmp) => {
 
     const shiftRows = str_uint8array => {
 
-        let result_uint8array = new Uint16Array(16)
+        let result_uint8array = new Uint8Array(16)
 
         // Line 1
 
