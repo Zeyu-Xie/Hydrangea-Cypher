@@ -1,25 +1,17 @@
-const _plain_text_submit = document.getElementById("plain_text_submit")
-const _file_submit = document.getElementById("file_submit")
+const _button_1 = document.getElementById("button_1")
+const _button_2 = document.getElementById("button_2")
 
 // Text Encryption
 
-_plain_text_submit.onclick = async () => {
+_button_1.onclick = async () => {
 
-    // Get plain text and password
+    const _p_1 = document.getElementById("p_1")
 
-    const _plain_text = document.getElementById("plain_text")
-    const plain_text = _plain_text.value
-    const _password = document.getElementById("password")
-    const password = _password.value
-    const _encrypted_text = document.getElementById("encrypted_text")
-
-    text_encrypt(plain_text, password).then(encrypted_uint8array => {
-
-        const encrypted_string = new TextDecoder("ascii").decode(encrypted_uint8array)
+    text_encrypt(document.getElementById("textarea_1").value, document.getElementById("input_1").value).then(encrypted_uint8array => {
+        const encrypted_string = String.fromCharCode.apply(null, encrypted_uint8array)
         return btoa(encrypted_string)
-
     }).then(encrypted_base64 => {
-        _encrypted_text.innerText = encrypted_base64
+        _p_1.innerText = encrypted_base64
     }).catch(err => {
         console.error(err)
     })
@@ -28,15 +20,14 @@ _plain_text_submit.onclick = async () => {
 
 // File Encryption
 
-_file_submit.onclick = async () => {
+_button_2.onclick = async () => {
 
     // Get file and password
 
-    const _file = document.getElementById("file")
-    const file = _file.files[0]
-    const _password = document.getElementById("password")
-    const password = _password.value
-    const _download = document.getElementById("download")
+    const file = document.getElementById("input_file_2").files[0]
+    const password = document.getElementById("input_2").value
+    
+    const _a_2 = document.getElementById("a_2")
 
     // Get file data and info
 
@@ -62,9 +53,9 @@ _file_submit.onclick = async () => {
     }).then(encrypted_file => {
         const url = URL.createObjectURL(encrypted_file)
 
-        _download.innerText = `Download (${encrypted_file.size})`
-        _download.href = url
-        _download.download = encrypted_file.name
+        _a_2.innerText = `Download (${encrypted_file.size})`
+        _a_2.href = url
+        _a_2.download = encrypted_file.name
     }).catch(err => {
         console.error(err)
     })
