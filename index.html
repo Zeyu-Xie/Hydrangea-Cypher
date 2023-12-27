@@ -60,55 +60,118 @@
         <h1>Hydrangea Cypher</h1>
     </header>
 
-    <h2>Encryption</h2>
-    <form id="encrypt_form" onsubmit="return false;">
+    <h2>Encryption / Decryption</h2>
 
-        <section class="select-view">
+    <section class="select-view">
+        <label for="option">Choose encrypt / decrypt here. </label>
+        
 
-            <label for="encryption_type">Please select your encryption type here.</label>
-            <select class="select-view-select" name="Encryption Type" id="encryption_type">
-                <option value="Text" selected>Text</option>
-                <option value="File">File</option>
-            </select>
+        <select id="option" class="select-view-select">
+            <option value="Encrypt" selected>Encrypt</option>
+            <option value="Decrypt">Decrypt</option>
+        </select>
+    
+        <form class="select-view-view option-Encrypt" id="encrypt_form" onsubmit="return false;">
+    
+            <section class="select-view">
+    
+                <label for="encryption_type">Please select your encryption type here.</label>
+                <select class="select-view-select" name="Encryption Type" id="encryption_type">
+                    <option value="Text" selected>Text</option>
+                    <option value="File">File</option>
+                </select>
+    
+                <fieldset class="select-view-view option-Text" id="text_encryption">
+                    <legend>Text Encryption</legend>
+                    <p>
+                        <textarea id="textarea_1" rows="5" placeholder="Your plain text here"></textarea>
+                    </p>
+                    <p>
+                        <label for="input_1">Password</label>
+                        <input id="input_1" type="password" maxlength="16" placeholder="No more than 16 characters"
+                            style="min-width: 150px;">
+                    </p>
+                    <p>
+                        <button id="button_1">Encrypt</button>
+                    </p>
+                    <p id="p_1" style="word-break: break-all;">
+    
+                    </p>
+                </fieldset>
+    
+                <fieldset class="select-view-view option-File" id="file_encryption">
+                    <legend>File Encryption</legend>
+                    <p>
+                        <input id="input_file_2" type="file">
+                    </p>
+                    <p>
+                        <label for="input_2">Password</label>
+                        <input id="input_2" type="password" maxlength="16" placeholder="No more than 16 characters"
+                            style="min-width: 150px;">
+                    </p>
+                    <p>
+                        <button id="button_2">Encrypt</button>
+                    </p>
+                    <p>
+                        <a id="a_2" href="" download="">Download</a>
+                    </p>
+                </fieldset>
+            </section>
+    
+        </form>
+    
+        <form class="select-view-view option-Decrypt" id="decrypt_form" onsubmit="return false;">
+    
+            <section class="select-view">
+    
+                <label for="decryption_type">Please select your decryption type here.</label>
+                <select class="select-view-select" name="Decryption Type" id="decryption_type">
+                    <option value="Text" selected>Text</option>
+                    <option value="File">File</option>
+                </select>
+    
+                <fieldset class="select-view-view option-Text" id="text_decryption">
+                    <legend>Text Decryption</legend>
+                    <p>
+                        <textarea id="textarea_3" rows="5" placeholder="Your encrypted text here"></textarea>
+                    </p>
+                    <p>
+                        <label for="input_3">Password</label>
+                        <input id="input_3" type="password" maxlength="16" placeholder="No more than 16 characters"
+                            style="min-width: 150px;">
+                    </p>
+                    <p>
+                        <button id="button_3">Decrypt</button>
+                    </p>
+                    <p id="p_3" style="word-break: break-all;">
+    
+                    </p>
+                </fieldset>
+    
+                <fieldset class="select-view-view option-File" id="file_decryption">
+                    <legend>File Decryption</legend>
+                    <p>
+                        <input id="input_file_4" type="file">
+                    </p>
+                    <p>
+                        <label for="input_4">Password</label>
+                        <input id="input_4" type="password" maxlength="16" placeholder="No more than 16 characters"
+                            style="min-width: 150px;">
+                    </p>
+                    <p>
+                        <button id="button_4">Decrypt</button>
+                    </p>
+                    <p>
+                        <a id="a_4" href="" download="">Download</a>
+                    </p>
+                </fieldset>
+            </section>
+    
+        </form>
+    
 
-            <fieldset class="select-view-view option-Text" id="text_encryption">
-                <legend>Text Encryption</legend>
-                <p>
-                    <textarea id="textarea_1" rows="5" placeholder="Your plain text here"></textarea>
-                </p>
-                <p>
-                    <label for="input_1">Password</label>
-                    <input id="input_1" type="password" maxlength="16" placeholder="No more than 16 characters"
-                        style="min-width: 150px;">
-                </p>
-                <p>
-                    <button id="button_1">Encrypt</button>
-                </p>
-                <p id="p_1" style="word-break: break-all;">
+    </section>
 
-                </p>
-            </fieldset>
-
-            <fieldset class="select-view-view option-File" id="file_encryption">
-                <legend>File Encryption</legend>
-                <p>
-                    <input id="input_file_2" type="file">
-                </p>
-                <p>
-                    <label for="input_2">Password</label>
-                    <input id="input_2" type="password" maxlength="16" placeholder="No more than 16 characters"
-                        style="min-width: 150px;">
-                </p>
-                <p>
-                    <button id="button_2">Encrypt</button>
-                </p>
-                <p>
-                    <a id="a_2" href="" download="">Download</a>
-                </p>
-            </fieldset>
-        </section>
-
-    </form>
 
     <h2>Introduction</h2>
 
